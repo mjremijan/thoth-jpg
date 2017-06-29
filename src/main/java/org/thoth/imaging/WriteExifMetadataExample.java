@@ -139,7 +139,9 @@ public class WriteExifMetadataExample {
 
     public static void main(String[] args) throws Exception
     {
-        String origStr = "438676_0001.jpg";
+        //String origStr = "438676_0001.jpg";
+        String origStr = "C:\\Users\\Michael\\Desktop\\Test\\00002_2008-05-30.jpg";
+
         String modiStr = "438676_0001_modified.jpg";
         changeExifMetadata(new File(origStr), new File(modiStr));
         System.out.printf("DONE!%n");
