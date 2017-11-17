@@ -14,30 +14,33 @@ public class DateTimeOriginalMain {
     public static void main(String[] args) throws Exception {
 
         GregorianCalendar calendar
-                = new GregorianCalendar(2008, Calendar.MAY, 30, 10, 59, 59);
+                = new GregorianCalendar(2017, Calendar.OCTOBER, 30, 17, 21, 29);
 
-        File dir
-            = new File("C:\\Users\\Michael\\Desktop\\Wedding pictures from photographer");
+        File srcDir
+            = new File("C:\\Users\\Michael\\Desktop\\move");
+
+        File dstDir
+            = new File("C:\\Users\\Michael\\Desktop\\moved");
 
         File[] orgs
-            = dir.listFiles(f -> f.isFile() && f.getName().endsWith(".jpg"));
+            = srcDir.listFiles(f -> f.isFile() && (f.getName().endsWith(".jpg") || f.getName().endsWith(".jpeg")));
 
         Arrays.sort(orgs, (f1, f2) -> f1.getName().compareTo(f2.getName()));
 
         int cnt = 0;
-        for (File org : orgs) {
+        for (File jpg : orgs) {
             cnt++;
-            System.out.printf("Processing %s%n", org.getName());
+            System.out.printf("Processing %s%n", jpg.getName());
 
             File dst
                 = new File(
-                    "C:\\Users\\Michael\\Desktop\\Wedding pictures from photographer (reordered)"
-                    , String.format("%s_reordered.jpg" ,org.getName().substring(0, org.getName().length() - 4)));
+                      dstDir
+                    , String.format("%s.jpg" ,jpg.getName().substring(0, jpg.getName().lastIndexOf("."))));
 
             DateTimeOriginalWriter
-                writer = new DateTimeOriginalWriter(org);
+                writer = new DateTimeOriginalWriter(jpg);
 
-            calendar.add(Calendar.SECOND, 30);
+            //calendar.add(Calendar.SECOND, 30);
             writer.write(dst, calendar);
 
 //            while (false == dst.renameTo(org)) {
