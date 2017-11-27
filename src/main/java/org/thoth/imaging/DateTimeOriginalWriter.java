@@ -67,10 +67,13 @@ public class DateTimeOriginalWriter {
             // set of exif metadata. Otherwise, we keep all of the other
             // existing tags.
             if (null == outputSet) {
+                System.out.printf("Creating new TiffOutputSet%n");
                 outputSet = new TiffOutputSet();
+                outputSet.addRootDirectory();
+                outputSet.addExifDirectory();
             }
 
-            final TiffOutputDirectory exifDirectory = outputSet
+            TiffOutputDirectory exifDirectory = outputSet
                 .getExifDirectory();
 
             exifDirectory

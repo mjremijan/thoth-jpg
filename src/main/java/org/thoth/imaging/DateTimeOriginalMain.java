@@ -14,16 +14,16 @@ public class DateTimeOriginalMain {
     public static void main(String[] args) throws Exception {
 
         GregorianCalendar calendar
-                = new GregorianCalendar(2017, Calendar.OCTOBER, 30, 17, 21, 29);
+                = new GregorianCalendar(2017, Calendar.NOVEMBER, 23, 9, 17, 29);
 
         File srcDir
-            = new File("C:\\Users\\Michael\\Desktop\\move");
+            = new File("C:\\Users\\Michael\\Desktop\\f");
 
         File dstDir
-            = new File("C:\\Users\\Michael\\Desktop\\moved");
+            = new File("C:\\Users\\Michael\\Desktop\\");
 
         File[] orgs
-            = srcDir.listFiles(f -> f.isFile() && (f.getName().endsWith(".jpg") || f.getName().endsWith(".jpeg")));
+            = srcDir.listFiles(f -> f.isFile() && (f.getName().toLowerCase().endsWith(".jpg") || f.getName().toLowerCase().endsWith(".jpeg")));
 
         Arrays.sort(orgs, (f1, f2) -> f1.getName().compareTo(f2.getName()));
 
