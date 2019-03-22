@@ -14,16 +14,18 @@ public class DateTimeOriginalMain {
     public static void main(String[] args) throws Exception {
 
         GregorianCalendar calendar
-                = new GregorianCalendar(2017, Calendar.NOVEMBER, 23, 9, 17, 29);
+                = new GregorianCalendar(2019, Calendar.MARCH, 02, 17, 15, 14);
 
         File srcDir
-            = new File("C:\\Users\\Michael\\Desktop\\f");
+            = new File("C:\\Users\\Michael\\Downloads\\a");
 
         File dstDir
-            = new File("C:\\Users\\Michael\\Desktop\\");
+            = new File("C:\\Users\\Michael\\Downloads\\b");
 
         File[] orgs
-            = srcDir.listFiles(f -> f.isFile() && (f.getName().toLowerCase().endsWith(".jpg") || f.getName().toLowerCase().endsWith(".jpeg")));
+            = srcDir.listFiles(f -> f.isFile() &&
+                ((f.getName().toLowerCase().endsWith(".jpg") || f.getName().toLowerCase().endsWith(".jpeg")))
+            );
 
         Arrays.sort(orgs, (f1, f2) -> f1.getName().compareTo(f2.getName()));
 
@@ -40,7 +42,7 @@ public class DateTimeOriginalMain {
             DateTimeOriginalWriter
                 writer = new DateTimeOriginalWriter(jpg);
 
-            //calendar.add(Calendar.SECOND, 30);
+//            calendar.add(Calendar.SECOND, 200);
             writer.write(dst, calendar);
 
 //            while (false == dst.renameTo(org)) {
